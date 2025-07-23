@@ -144,8 +144,18 @@ object DiceRoller {
 data class DiceCombination(
     val value: Int,
     val diceUsed: List<DiceColor>,
-    val availableForRows: List<RowColor>
-)
+    val availableForRows: List<RowColor>,
+    val isPass: Boolean = false
+) {
+    companion object {
+        fun passMove(): DiceCombination = DiceCombination(
+            value = 0,
+            diceUsed = emptyList(),
+            availableForRows = emptyList(),
+            isPass = true
+        )
+    }
+}
 
 /**
  * Enum representing dice colors
